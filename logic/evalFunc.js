@@ -219,7 +219,14 @@ function boardEval(board, color) {
     return value;
 }
 
-function main() {
+
+function getBestMove(board) {
+    return undefined;
+}
+
+
+// if main index is executed, run the tests
+if (require.main === module) {
     testStringTo2DArray();
 }
 
