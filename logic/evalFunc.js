@@ -1,7 +1,47 @@
+/**
+ *
+ * @param board array [7][6]
+ * @param color 1 or 2
+ * @return {number} best move column for the player of given color
+ */
+function findBestMove(board, color) {
+    let bestMoveColumn = -1;
+    let bestMoveValue = -Infinity;
 
+    for (let column = 0; column < 7; column++) {
+        if (board[column][5] === 0) {
+            // Trouver la première cellule vide dans la colonne
+            let row = 0;
+            while (row < 6 && board[column][row] !== 0) {
+                row++;
+            }
 
+            // Faire un mouvement temporaire
+            board[column][row] = color;
 
+            // Évaluer le tableau
+            let currentValue = boardEval(board, color);
 
+            // Annuler le mouvement temporaire
+            board[column][row] = 0;
+
+            // Mettre à jour le meilleur coup si nécessaire
+            if (currentValue > bestMoveValue) {
+                bestMoveValue = currentValue;
+                bestMoveColumn = column;
+            }
+        }
+    }
+
+    return bestMoveColumn;
+}
+
+/**
+ *
+ * @param board array [7][6]
+ * @param color 1 or 2
+ * @return {number} score for the player of given color
+ */
 function boardEval(board, color) {
     let value = 0;
     for(let column = 0; column<7; column++){
