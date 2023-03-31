@@ -220,11 +220,6 @@ function boardEval(board, color) {
 }
 
 
-function getBestMove(board) {
-    return undefined;
-}
-
-
 // if main index is executed, run the tests
 if (require.main === module) {
     testStringTo2DArray();
@@ -240,7 +235,7 @@ app.get('/move', (req, res) => {
     if (board.match(/[^0hm]/)) return res.status(400).json({ error: 'Board contains invalid characters' });
 
 
-    const columnToPlay = getBestMove(board);
+    const columnToPlay = findBestMove(board);
     if (columnToPlay === undefined) return res.status(400).json({ error: 'No valid move' });
     if (columnToPlay === "lose") return res.status(420).json({ column: "gameover" });
 
