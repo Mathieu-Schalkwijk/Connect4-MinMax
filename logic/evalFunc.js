@@ -1,5 +1,32 @@
+/**
+ * Convert a string to a 2D array
+ *
+ * @param str {string} like m00000h00000mm0000hmh000h00000h00000000000
+ * @returns {*[]}
+ * @example
+ * stringTo2DArray('m00000h00000mm0000hmh000h00000h00000000000')
+ * // => [
+ * //     ['m', '0', '0', '0', '0', '0'],
+ * //     ['h', '0', '0', '0', '0', '0'],
+ * //     ['m', 'm', '0', '0', '0', '0'],
+ * //     ['h', 'm', 'h', '0', '0', '0'],
+ * //     ['h', '0', '0', '0', '0', '0'],
+ * //     ['h', '0', '0', '0', '0', '0'],
+ * //     ['0', '0', '0', '0', '0', '0'],
+ */
+function stringTo2DArray(str) {
+    const cols = 6;
+    const rows = 7;
+    const arr = [];
 
-
+    for (let i = 0; i < rows; i++) {
+        arr.push([]);
+        for (let j = 0; j < cols; j++) {
+            arr[i].push(str[j + i * cols]);
+        }
+    }
+    return arr;
+}
 
 
 function boardEval(board, color) {
