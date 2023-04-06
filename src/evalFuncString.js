@@ -3,8 +3,7 @@
  * String example: m00000h00000mm0000hmh000h00000h00000000000
  */
 
-function boardEval(boardStr, color) {
-    const colorChar = color === 1 ? 'm' : 'h';
+function boardEval(boardStr, colorChar) {
     let value = 0;
 
     for (let column = 0; column < 7; column++) {
@@ -108,7 +107,7 @@ function boardEval(boardStr, color) {
 
 
 
-function findBestMove(boardStr, color) {
+function findBestMoveString(boardStr, colorChar) {
     let bestMoveColumn = -1;
     let bestMoveValue = -Infinity;
 
@@ -123,10 +122,10 @@ function findBestMove(boardStr, color) {
             const index = column * 6 + row;
 
             // Faire un mouvement temporaire
-            const tempMoveStr = boardStr.slice(0, index) + (color === 1 ? 'm' : 'h') + boardStr.slice(index + 1);
+            const tempMoveStr = boardStr.slice(0, index) + (colorChar) + boardStr.slice(index + 1);
 
             // Évaluer le tableau
-            const currentValue = boardEval(tempMoveStr, color);
+            const currentValue = boardEval(tempMoveStr, colorChar);
 
             // Mettre à jour le meilleur coup si nécessaire
             if (currentValue > bestMoveValue) {
@@ -138,3 +137,5 @@ function findBestMove(boardStr, color) {
 
     return bestMoveColumn;
 }
+
+module.exports = {findBestMoveString}

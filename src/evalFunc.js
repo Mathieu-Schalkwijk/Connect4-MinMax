@@ -2,13 +2,20 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+function findBestMoveStringToArray(boardStr, colorChar) {
+    const boardArray = stringTo2DArray(boardStr);
+    return findBestMoveArray(boardArray, colorChar);
+}
+
+module.exports = {findBestMoveStringToArray}
+
 /**
  *
  * @param board array [7][6]
  * @param color 1 or 2
  * @return {number} best move column for the player of given color
  */
-function findBestMove(board, color) {
+function findBestMoveArray(board, color) {
     let bestMoveColumn = -1;
     let bestMoveValue = -Infinity;
 
