@@ -84,7 +84,7 @@ function boardEval(board, color) {
     let value = 0;
     for(let column = 0; column<7; column++){
         for(let row = 0; row<6; row++){
-            if (board[column][row] === 0){
+            if (board[column][row] === '0'){
                 let cellValue = 0;
                 let horizontalVal = 0;
 
