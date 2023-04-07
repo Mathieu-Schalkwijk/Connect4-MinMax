@@ -16,7 +16,7 @@ app.get('/move', (req, res) => {
 
     const columnToPlay = findBestMoveStringToArray(board);
     if (columnToPlay === undefined) return res.status(400).json({ error: 'No valid move' });
-    if (columnToPlay === "lose") return res.status(420).json({ column: "gameover" });
+    if (columnToPlay === -1) return res.status(420).json({ column: "gameover" });
 
     res.status(200).json({ column: columnToPlay });
 });
