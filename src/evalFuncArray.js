@@ -1,7 +1,3 @@
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
-
 function findBestMoveStringToArray(boardStr, colorChar) {
     const boardArray = stringTo2DArray(boardStr);
     return findBestMoveArray(boardArray, colorChar);
