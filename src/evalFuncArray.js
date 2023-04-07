@@ -7,7 +7,7 @@ function findBestMoveStringToArray(boardStr, colorChar) {
     return findBestMoveArray(boardArray, colorChar);
 }
 
-module.exports = {findBestMoveStringToArray}
+module.exports = {findBestMoveStringToArray, stringTo2DArray}
 
 /**
  *
@@ -76,49 +76,6 @@ function stringTo2DArray(str) {
         }
     }
     return arr;
-}
-
-function testStringTo2DArray() {
-    const testCases = [
-        {
-            input:
-                'm00000' +
-                'h00000' +
-                'mm0000' +
-                'hmh000' +
-                'h00000' +
-                'h00000' +
-                '000000',
-            expected: [
-                ['m', '0', '0', '0', '0', '0'],
-                ['h', '0', '0', '0', '0', '0'],
-                ['m', 'm', '0', '0', '0', '0'],
-                ['h', 'm', 'h', '0', '0', '0'],
-                ['h', '0', '0', '0', '0', '0'],
-                ['h', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0']
-            ]
-        },
-        {
-            input: '0000000000000000000000000000000000000000000',
-            expected: [
-                ['0', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0'],
-                ['0', '0', '0', '0', '0', '0']
-            ]
-        }
-    ];
-
-    testCases.forEach((testCase, index) => {
-        const result = stringTo2DArray(testCase.input);
-        const passed = JSON.stringify(result) === JSON.stringify(testCase.expected);
-
-        console.log(`Test case ${index + 1}: ${passed ? 'Passed' : 'Failed'}`);
-    });
 }
 
 /**
@@ -225,30 +182,3 @@ function boardEval(board, color) {
     }
     return value;
 }
-
-
-// if main index is executed, run the tests
-if (require.main === module) {
-    testStringTo2DArray();
-}
-
-// Route for receiving GET requests
-app.get('/move', (req, res) => {
-    const board = req.query.b; // b is the 42 chars board string
-
-    if (!board) return res.status(400).json({ error: 'No board or b' });
-    if (board.length < 42) return res.status(400).json({ error: 'Board is too short' });
-    if (board.length > 42) return res.status(400).json({ error: 'Board is too long' });
-    if (board.match(/[^0hm]/)) return res.status(400).json({ error: 'Board contains invalid characters' });
-
-
-    const columnToPlay = findBestMove(board);
-    if (columnToPlay === undefined) return res.status(400).json({ error: 'No valid move' });
-    if (columnToPlay === "lose") return res.status(420).json({ column: "gameover" });
-
-    res.status(200).json({ column: columnToPlay });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
