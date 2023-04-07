@@ -3,7 +3,7 @@ function findBestMoveStringToArray(boardStr, colorChar) {
     return findBestMoveArray(boardArray, colorChar);
 }
 
-module.exports = {findBestMoveStringToArray, stringTo2DArray}
+module.exports = {findBestMoveStringToArray, stringTo2DArray, boardEval}
 
 /**
  *
@@ -77,7 +77,7 @@ function stringTo2DArray(str) {
 /**
  *
  * @param board array [7][6]
- * @param color 1 or 2
+ * @param color 'h' or 'm'
  * @return {number} score for the player of given color
  */
 function boardEval(board, color) {

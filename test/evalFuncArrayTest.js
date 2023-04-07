@@ -1,4 +1,4 @@
-const { stringTo2DArray } = require('../src/evalFuncArray.js');
+const { stringTo2DArray, boardEval } = require('../src/evalFuncArray.js');
 
 function testStringTo2DArray() {
     const testCases = [
