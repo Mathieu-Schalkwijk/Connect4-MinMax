@@ -16,10 +16,10 @@ function findBestMoveArray(board, color) {
     let bestMoveValue = -Infinity;
 
     for (let column = 0; column < 7; column++) {
-        if (board[column][5] === 0) {
+        if (board[column][5] === '0') {
             // Trouver la première cellule vide dans la colonne
             let row = 0;
-            while (row < 6 && board[column][row] !== 0) {
+            while (row < 6 && board[column][row] !== '0') {
                 row++;
             }
 
