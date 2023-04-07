@@ -138,4 +138,4 @@ function findBestMoveString(boardStr, colorChar) {
     return bestMoveColumn;
 }
 
-module.exports = {findBestMoveString}
+module.exports = {findBestMoveString, boardEval}
