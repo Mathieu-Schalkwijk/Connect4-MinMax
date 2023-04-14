@@ -75,6 +75,38 @@ function stringTo2DArray(str) {
 }
 
 /**
+ * Convert a 2D array to a string
+ * @example
+ * array2DToString([
+ *   ['m', '0', '0', '0', '0', '0'],
+ *   ['h', '0', '0', '0', '0', '0'],
+ *   ['m', 'm', '0', '0', '0', '0'],
+ *   ['h', 'm', 'h', '0', '0', '0'],
+ *   ['h', '0', '0', '0', '0', '0'],
+ *   ['h', '0', '0', '0', '0', '0'],
+ *   ['0', '0', '0', '0', '0', '0'],
+ *   ])
+ *   // => 'm00000h00000mm0000hmh000h00000h00000000000'
+ *
+ * @param arr {array} 2D array
+ *
+ * @returns {string}
+ */
+function array2DToString(arr) {
+    const rows = arr.length;
+    const cols = arr[0].length;
+    let str = '';
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            str += arr[i][j];
+        }
+    }
+    return str;
+}
+
+
+/**
  *
  * @param board array [7][6]
  * @param color 'h' or 'm'
