@@ -9,8 +9,8 @@ app.get('/move', (req, res) => {
     const board = req.query.b; // b is the 42 chars board string
 
     if (!board) return res.status(400).json({ error: 'No board or b' });
-    if (board.length < 42) return res.status(400).json({ error: 'Board is too short' });
-    if (board.length > 42) return res.status(400).json({ error: 'Board is too long' });
+    if (board.length < 43) return res.status(400).json({ error: 'Board is too short ' + board.length + ' (should be 43)' });
+    if (board.length > 43) return res.status(400).json({ error: 'Board is too long ' + board.length + ' (should be 43)' });
     if (board.match(/[^0hm]/)) return res.status(400).json({ error: 'Board contains invalid characters' });
 
 
