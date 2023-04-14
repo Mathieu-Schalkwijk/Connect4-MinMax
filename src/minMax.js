@@ -107,6 +107,4 @@ function bestMove(board, color, depth) {
     return move;
 }
 
-//const board = stringTo2DArray("m00000h00000mm0000hmh000h00000h00000000000");
-const board = stringTo2DArray("000000000000000000000000000000000000000000");
-console.log(bestMove(board, 'm', 4))
+module.exports = {bestMove}
