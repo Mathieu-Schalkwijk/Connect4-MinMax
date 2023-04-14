@@ -10,7 +10,7 @@ function isGameOver(board, color) {//TODO: get the last move to avoid extra comp
 
     for (let row = 0; row < 6; row++) {
         for (let col = 0; col < 7; col++) {
-            if (board[row][col] === color) {
+            if (board[col][row] === color) {
                 for (const dir of directions) {
                     let found = 1;
                     let currentRow = row + dir.y;
@@ -21,9 +21,10 @@ function isGameOver(board, color) {//TODO: get the last move to avoid extra comp
                         currentCol >= 0 &&
                         currentCol < 7
                         ) {
-                        if (board[currentRow][currentCol] === color) {
+                        if (board[currentCol][currentRow] === color) {
                             found++;
                             if (found === 4) {
+                                console.log("WIN:", board)
                                 return true;
                             }
                         } else {
@@ -106,5 +107,6 @@ function bestMove(board, color, depth) {
     return move;
 }
 
-const board = stringTo2DArray("m00000h00000mm0000hmh000h00000h00000000000");
+//const board = stringTo2DArray("m00000h00000mm0000hmh000h00000h00000000000");
+const board = stringTo2DArray("000000000000000000000000000000000000000000");
 console.log(bestMove(board, 'm', 4))
