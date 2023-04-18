@@ -79,9 +79,9 @@ function minMax(board, depth, maximizingPlayer, color) {
 function playMove(board, col, color) {
     let newBoard = JSON.parse(JSON.stringify(board));
 
-    for (let row = 5; row >= 0; row--) {
-        if (newBoard[row][col] === '0') {
-            newBoard[row][col] = color;
+    for (let row = 0; row < 6; row++) {
+        if (newBoard[col][row] === '0') {
+            newBoard[col][row] = color;
             return newBoard;
         }
     }
