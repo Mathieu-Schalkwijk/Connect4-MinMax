@@ -8,12 +8,24 @@ body {
     justify-content: center;
 }
 
+.player-win-container {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+
 .grid-container {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     min-width: 200px;
     height: 100vh;
+}
+
+.player-win-container {
 }
 
 table {
