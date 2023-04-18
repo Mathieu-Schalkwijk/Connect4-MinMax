@@ -24,7 +24,7 @@ function isGameOver(board, color) {//TODO: get the last move to avoid extra comp
                         if (board[currentCol][currentRow] === color) {
                             found++;
                             if (found === 4) {
-                                console.log("WIN:", board)
+                                //console.log("WIN:", board)
                                 return true;
                             }
                         } else {
@@ -44,7 +44,7 @@ function isGameOver(board, color) {//TODO: get the last move to avoid extra comp
 
 function minMax(board, depth, maximizingPlayer, color) {
     if (depth === 0 || isGameOver(board, color)) {
-        console.count("calling boardEval");
+        //console.count("calling boardEval");
         return boardEval(board, color);
     }
 
@@ -56,7 +56,7 @@ function minMax(board, depth, maximizingPlayer, color) {
         for (let col = 0; col < 7; col++) {
             let newBoard = playMove(board, col, color);
             if (newBoard !== null) {
-                console.log("calling minMax with current depth: " + depth);
+                //console.log("calling minMax with current depth: " + depth);
                 let value = minMax(newBoard, depth - 1, false, opponent);
                 bestValue = Math.max(bestValue, value);
             }
@@ -66,7 +66,7 @@ function minMax(board, depth, maximizingPlayer, color) {
         for (let col = 0; col < 7; col++) {
             let newBoard = playMove(board, col, opponent);
             if (newBoard !== null) {
-                console.log("calling minMax with current depth: " + depth);
+                //console.log("calling minMax with current depth: " + depth);
                 let value = minMax(newBoard, depth - 1, true, color);
                 bestValue = Math.min(bestValue, value);
             }
