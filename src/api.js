@@ -20,7 +20,7 @@ app.get('/move', (req, res) => {
 
     console.log("new request with board: " + board);
     //const columnToPlay = findBestMoveStringToArray(board);
-    const columnToPlay = bestMove(stringTo2DArray(board), "m", 7);
+    const columnToPlay = bestMove(stringTo2DArray(board), "m", 6);
     if (columnToPlay === undefined) return res.status(400).json({ error: 'No valid move' });
     if (columnToPlay === -1) return res.status(420).json({ column: "gameover" });
 

@@ -1,4 +1,5 @@
 const { boardEval, stringTo2DArray } = require('./evalFuncArray.js');
+const { newBoardEval } = require('./newBoardEval.js');
 
 function isGameOver(board, color) {//TODO: get the last move to avoid extra computation
     const directions = [
@@ -92,10 +93,24 @@ function playMove(board, col, color) {
 function bestMove(board, color, depth) {
     let bestValue = -Infinity;
     let move = -1;
+    const opponent = color === 'm' ? 'h' : 'm';
+
+    //verify if the human can win in the next move
+    for (let col = 0; col < 7; col++) {
+        let newBoard = playMove(board, col, opponent);
+        if (newBoard !== null) {
+            if (isGameOver(newBoard, opponent)) {
+                return col; //counter the human winning move
+            }
+        }
+    }
 
     for (let col = 0; col < 7; col++) {
         let newBoard = playMove(board, col, color);
         if (newBoard !== null) {
+            if (isGameOver(newBoard, color)) {//the move is a winning move
+                return col;
+            }
             let value = minMax(newBoard, depth - 1, false, color === 'm' ? 'h' : 'm');
             if (value > bestValue) {
                 bestValue = value;
